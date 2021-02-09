@@ -22,3 +22,10 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### docker
+
+```sh
+docker run -d -v ./dist/default.conf:/etc/nginx/conf.d/default.conf -v ./dist/:/usr/share/nginx/html -it --rm  -p:8800:80 nginx
+```
