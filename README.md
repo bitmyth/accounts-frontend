@@ -1,4 +1,4 @@
-# hell-world
+# accounts
 
 ## Project setup
 ```
