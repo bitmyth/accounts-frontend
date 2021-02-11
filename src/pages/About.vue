@@ -5,8 +5,11 @@
         <div class="container">
           <div class="columns is-mobile is-centered">
             <div class="column is-half has-background-light box">
-              <user-name :form="form" field="Name"> </user-name>
-              <user-name :form="form" field="Email"> </user-name>
+              <h1 class="is-size-2">About this project</h1>
+              <h1 class="is-size-5">description: {{ text }}</h1>
+              <h1 class="is-size-5">
+                link: <a :href="link" class="is-link">{{ link }}</a>
+              </h1>
             </div>
           </div>
         </div>
@@ -17,16 +20,15 @@
 
 <script>
 import MainLayout from "../layouts/Main.vue";
-import UserName from "../components/profile/UserName.vue";
 
 export default {
   components: {
     MainLayout,
-    UserName,
   },
   data() {
     return {
-      form: this.$store.state.user,
+      text: "This is a demo project with vue",
+      link: "https://github.com/bitmyth/account-frontend",
     };
   },
 };

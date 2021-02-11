@@ -5,8 +5,11 @@
         <div class="container">
           <div class="columns is-mobile is-centered">
             <div class="column is-half has-background-light box">
-              <user-name :form="form" field="Name"> </user-name>
-              <user-name :form="form" field="Email"> </user-name>
+              <h1 class="is-size-2">Contact infomation</h1>
+
+              <text-field :form="form" field="email"> </text-field>
+
+              <text-field :form="form" field="wechat"> </text-field>
             </div>
           </div>
         </div>
@@ -17,16 +20,20 @@
 
 <script>
 import MainLayout from "../layouts/Main.vue";
-import UserName from "../components/profile/UserName.vue";
+import TextField from "../components/input/TextField.vue";
+import Form from "../models/Form";
 
 export default {
   components: {
     MainLayout,
-    UserName,
+    TextField,
   },
   data() {
     return {
-      form: this.$store.state.user,
+      form: new Form({
+        email: "fishis@163.com",
+        wechat: "bitmyth",
+      }),
     };
   },
 };

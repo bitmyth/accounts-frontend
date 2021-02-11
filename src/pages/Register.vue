@@ -1,70 +1,45 @@
 <template>
   <main-layout>
-    <section class="hero is-info is-fullheight">
+    <section class="hero is-info is-fullheight-with-navbar">
       <div class="hero-body">
         <div class="container">
-          <div class="columns is-mobile is-centered ">
+          <div class="columns is-mobile is-centered">
             <div class="column is-half has-background-light box">
+              <form
+                method="post"
+                @submit.prevent="onSubmit"
+                @keydown="clearFormError($event.target.name)"
+              >
+                <user-name :form="form" field="name" type="text"> </user-name>
+                <password :form="form" field="password"> </password>
+                <password :form="form" field="passwordConfirm" label="confirm password"> </password>
+                
 
-              <div class="field">
-                <label class="label">Username</label>
-                <div class="control has-icons-left has-icons-right">
-                  <input
-                    class="input is-success"
-                    type="text"
-                    placeholder="Input username"
-                  />
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                  </span>
-                  <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                  </span>
+                <div class="field">
+                  <div class="control">
+                    <label class="checkbox">
+                      <input type="checkbox" />
+                      I agree to the <a href="#">terms and conditions</a>
+                    </label>
+                  </div>
                 </div>
-                <p class="help is-success"></p>
-              </div>
 
-              <div class="field">
-                <label class="label">Password</label>
-                <div class="control has-icons-left has-icons-right">
-                  <input
-                    class="input is-danger"
-                    type="password"
-                    placeholder="Input Password"
-                    value=""
-                  />
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                  </span>
-                  <span class="icon is-small is-right">
-                    <i class="fas fa-exclamation-triangle"></i>
-                  </span>
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button
+                      class="button is-link"
+                      :class="{ 'is-loading': isLoading }"
+                      :disabled="isDisabled"
+                    >
+                      Submit
+                    </button>
+                  </div>
+
+                  <div class="control">
+                    <a class="button is-link is-light " href="/login"> login </a>
+                  </div>
                 </div>
-                <p class="help is-danger"></p>
-              </div>
-
-              <div class="field">
-                <div class="control">
-                  <label class="checkbox">
-                    <input type="checkbox" />
-                    I agree to the <a href="#">terms and conditions</a>
-                  </label>
-                </div>
-              </div>
-
-              <div class="field is-grouped">
-                <div class="control">
-                  <button class="button is-link">Submit</button>
-                </div>
-                <div class="control">
-                  <button class="button is-link is-light">Cancel</button>
-                </div>
-              </div>
-
-              <div class="">
-                <a href="/login">login</a>
-              </div>
-
+              </form>
             </div>
           </div>
         </div>
@@ -75,9 +50,56 @@
 
 <script>
 import MainLayout from "../layouts/Main.vue";
+import Password from "../components/login/Password.vue";
+import UserName from "../components/login/UserName.vue";
+import Form from "../models/Form.js";
+import LocalStore from "../localstorage";
+
 export default {
   components: {
     MainLayout,
+    UserName,
+    Password,
+  },
+
+  data() {
+    return {
+      form: new Form({
+        name: "",
+        password: "",
+        passwordConfirm: "",
+      }),
+      isLoading: false,
+      isDisabled: false,
+    };
+  },
+
+  methods: {
+    clearFormError(name) {
+      this.form.errors.clear(name);
+      this.isDisabled = this.form.errors.any();
+    },
+
+    onSubmit() {
+      this.isLoading = true;
+      this.form
+        .post("/v1/register")
+        .then((data) => {
+          console.log(data);
+          LocalStore.user = data.user;
+          LocalStore.token = data.token;
+          this.$store.commit("login", data.user);
+          this.$router.push('profile')
+
+        })
+        .catch((error) => {
+          console.log(error);
+          this.isDisabled = this.form.errors.any();
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    },
   },
 };
 </script>

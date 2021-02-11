@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <label class="label">{{ field }}</label>
+    <label class="label">{{ label ? label : field }}</label>
     <div class="control has-icons-left has-icons-right">
       <input
         class="input"
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  props: ["field", "form", "type"],
+  props: ["field", "form", "type","label"],
   methods: {
     style(field) {
       return {
