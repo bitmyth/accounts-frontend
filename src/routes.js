@@ -1,4 +1,5 @@
 import Login  from "./pages/Login"
+import Users  from "./pages/admin/Users"
 import Register  from "./pages/Register"
 import Profile  from "./pages/Profile"
 import About  from "./pages/About"
@@ -11,6 +12,7 @@ const routes = [
   { path: '/profile', component: Profile },
   { path: '/about', component: About },
   { path: '/contact', component: Contact },
+  { path: '/admin/users', component: Users },
 ]
 
 const router = new VueRouter({

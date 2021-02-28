@@ -11,7 +11,7 @@
         v-model="form[field]"
       />
       <span class="icon is-small is-left">
-        <i class="fas fa-user"></i>
+        <i class="fas fa-lock"></i>
       </span>
       <span class="icon is-small is-right">
         <i class="fas fa-check"></i>

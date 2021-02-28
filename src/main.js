@@ -5,7 +5,8 @@ import router from './routes'
 import LocalStore from "./localstorage";
 import store from './store'
 
-// import 'bulma/css/bulma.css'
+import 'bulma/css/bulma.css'
+import '@fortawesome/fontawesome-free/js/all'
 
 LocalStore.recover(store)
 
