@@ -44,10 +44,9 @@ jobs:
         run: |
            free -h
            df -h
-      - name: set a
-        run: export a=222
+
       - name: echo a
-        run: echo ${a}
+        run: echo "Deploying to production server on branch $GITHUB_REF"
 
       - name: Build and push
         id: docker_build
