@@ -32,7 +32,11 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       - name: Set env
-        run: echo "GIT_TAG_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        id: tagName
+        run: |
+        echo "GIT_TAG_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+
 
       - name: Show tag
         run: echo $GIT_TAG_NAME
@@ -44,7 +48,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: bitmyth/accounts-frontend:${{ GIT_TAG_NAME }}
+          tags: bitmyth/accounts-frontend:${{ steps.tagName.outputs.tag }}
 
       # Runs a single command using the runners shell
       - name: Show Image digest
