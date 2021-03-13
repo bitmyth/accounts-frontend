@@ -41,7 +41,7 @@ jobs:
         run: echo $GIT_TAG_NAME
 
       - name: Show npmrc
-        run: echo ~/.npmrc
+        run: cat ~/.npmrc
 
       - name: Build and push
         id: docker_build
