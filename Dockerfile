@@ -1,9 +1,9 @@
 FROM node:15 as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN /usr/local/bin/npm install
+RUN npm install
 COPY . .
-RUN /usr/local/bin/npm run build
+RUN npm run build
 
 FROM nginx:alpine as production-stage
 COPY --from=build-stage /app/dist /app
