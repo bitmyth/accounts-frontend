@@ -40,8 +40,10 @@ jobs:
       - name: Show tag
         run: echo $GIT_TAG_NAME
 
-      - name: Show docker ps
-        run: docker ps
+      - name: set a
+        run: export a=222
+      - name: echo a
+        run: echo $a
 
       - name: Build and push
         id: docker_build
