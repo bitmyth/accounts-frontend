@@ -35,8 +35,6 @@ jobs:
 
       - name: Show tag
         run: echo $GIT_TAG_NAME
-      - name: Set npm registry
-        run: npm config set registry http://registry.npmjs.org 
 
       - name: Build and push
         id: docker_build
