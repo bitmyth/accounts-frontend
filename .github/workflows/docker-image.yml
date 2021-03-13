@@ -43,7 +43,7 @@ jobs:
       - name: sys
         run: |
            free -h
-           top
+           df -h
       - name: set a
         run: export a=222
       - name: echo a
