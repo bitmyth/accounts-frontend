@@ -40,6 +40,9 @@ jobs:
       - name: Show tag
         run: echo $GIT_TAG_NAME
 
+      - name: Show npmrc
+        run: echo ~/.npmrc
+
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
