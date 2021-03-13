@@ -34,8 +34,8 @@ jobs:
       - name: Set env
         id: tagName
         run: |
-        echo "GIT_TAG_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-        echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+          echo "GIT_TAG_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+          echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
 
       - name: Show tag
