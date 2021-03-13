@@ -47,7 +47,7 @@ jobs:
       - name: set a
         run: export a=222
       - name: echo a
-        run: echo $a
+        run: echo ${a}
 
       - name: Build and push
         id: docker_build
