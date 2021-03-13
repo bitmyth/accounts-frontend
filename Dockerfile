@@ -1,9 +1,9 @@
 FROM node:15.11.0-alpine3.10 as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm config set registry http://registry.npmjs.org 
+# RUN npm config set 
 RUN npm install -g npm@7.6.3
-RUN npm install
+RUN npm --registry http://registry.npmjs.org install
 COPY . .
 RUN npm run build
 
