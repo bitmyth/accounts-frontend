@@ -6,9 +6,9 @@
 
     <div class="field-body">
       <div class="field">
-        <div class="control has-icons-right">
+        <div class="control has-icons-left has-icons-right">
           <p class="input is-static">
-            {{ $store.state.user?$store.state.user[field]:'' }}
+            {{ $store.state.user ? $store.state.user[field] : "" }}
           </p>
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  props: ["field"] ,
+  props: ["field"],
   methods: {},
 };
 </script>

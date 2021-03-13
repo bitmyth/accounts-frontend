@@ -3,10 +3,10 @@
     <section class="hero is-success is-fullheight-with-navbar">
       <div class="hero-body">
         <div class="container">
-          <div class="columns is-mobile is-centered">
+          <div class="columns is-centered">
             <div class="column is-half has-background-light box">
-              <user-name :form="form" field="Name"> </user-name>
-              <user-name :form="form" field="Email"> </user-name>
+              <user-name :form="form" field="Name"></user-name>
+              <user-name :form="form" field="Email"></user-name>
             </div>
           </div>
         </div>

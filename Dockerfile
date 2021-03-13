@@ -1,7 +1,3 @@
-# FROM nginx:alpine
-# COPY dist /app
-# COPY docker/default.conf /etc/nginx/conf.d/default.conf
-
 FROM node:15 as build-stage
 WORKDIR /app
 COPY package*.json ./

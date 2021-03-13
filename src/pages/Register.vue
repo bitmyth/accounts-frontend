@@ -3,7 +3,7 @@
     <section class="hero is-info is-fullheight-with-navbar">
       <div class="hero-body">
         <div class="container">
-          <div class="columns is-mobile is-centered">
+          <div class="columns is-centered">
             <div class="column is-half has-background-light box">
               <form
                 method="post"
