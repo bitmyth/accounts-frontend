@@ -1,7 +1,7 @@
 FROM node:15.11.0-alpine3.10 as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install -g yarn
+RUN npm install -g npm@7.6.3
 RUN npm install
 COPY . .
 RUN npm run build
