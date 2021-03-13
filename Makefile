@@ -5,3 +5,6 @@ image:
 
 run-image:
 	docker run --rm -it -p8086:80 $(IMAGE)
+
+run:
+	npm run serve
