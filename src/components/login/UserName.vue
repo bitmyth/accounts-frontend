@@ -3,7 +3,8 @@
     <label class="label">{{ field }}</label>
     <div class="control has-icons-left has-icons-right">
       <input
-        class="input"
+        autocomplete="username"
+        class="input is-hovered"
         :type="type"
         :name="field"
         :class="style(field)"
@@ -14,9 +15,9 @@
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
-      <span class="icon is-small is-right">
+      <!-- <span class="icon is-small is-right">
         <i class="fas fa-check"></i>
-      </span>
+      </span> -->
     </div>
     <p
       class="help"

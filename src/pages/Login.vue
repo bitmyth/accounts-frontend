@@ -1,10 +1,10 @@
 <template>
   <main-layout>
-    <section class="hero is-success is-fullheight-with-navbar">
+    <section class="hero is-fullheight-with-navbar">
       <div class="hero-body">
         <div class="container">
           <div class="columns is-centered">
-            <div class="column is-half has-background-light box">
+            <div class="column is-half has-background-white box">
               <form
                 method="post"
                 @submit.prevent="onSubmit"
@@ -13,19 +13,22 @@
                 <user-name :form="form" field="name" type="text"> </user-name>
                 <password :form="form" field="password"> </password>
 
-                <div class="field is-grouped">
+                <div class="field">
                   <div class="control">
                     <button
-                      class="button is-link"
+                      class="button is-link is-fullwidth"
                       :class="{ 'is-loading': isLoading }"
                       :disabled="isDisabled"
                     >
                       Submit
                     </button>
                   </div>
-
+                </div>
+                <div class="field">
                   <div class="control">
-                    <a class="button is-link is-light" href="/register"> register </a>
+                    <a class="is-link is-light" href="/register">
+                      register
+                    </a>
                   </div>
                 </div>
               </form>
@@ -76,7 +79,7 @@ export default {
           LocalStore.user = data.user;
           LocalStore.token = data.token;
           this.$store.commit("login", data.user);
-          this.$router.push('profile')
+          this.$router.push("profile");
         })
         .catch((error) => {
           console.log(error);
